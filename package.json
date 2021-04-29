@@ -1,0 +1,34 @@
+{
+  "name": "node_service_eventstream-api",
+  "version": "0.0.1",
+  "description": "node_service_eventstream-api",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "debug": "~2.6.9",
+    "esm": "^3.2.25",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "httpntlm": "^1.7.6",
+    "ladc": "^0.22.14",
+    "md5": "^2.3.0",
+    "morgan": "^1.10.0",
+    "pug": "3.0.2",
+    "toml": "^3.0.0",
+    "sequelize": "^6.5.0",
+    "pg": "^8.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StadGent/node_service_eventstream-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StadGent/node_service_eventstream-api/issues"
+  },
+  "homepage": "https://github.com/StadGent/node_service_eventstream-api#readme"
+}
