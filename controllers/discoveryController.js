@@ -35,11 +35,11 @@ module.exports.getDiscoveryMetadata = async function(req, res) {
         });
         for (let i in institutions) {
             const databases = await db.models.Member.findAll({
-                attributes: ['database'],
+                attributes: ['adlibDatabase'],
                 where: {
                     "institution": institutions[i].institution
                 },
-                group: "database"
+                group: "adlibDatabase"
             });
             for (let d in databases) {
                 let institutionName = "";
@@ -57,14 +57,14 @@ module.exports.getDiscoveryMetadata = async function(req, res) {
                     uitgevers = config[institutions[i].institution].institutionURI;
                 }
                 md["heeftDataset"].push({
-                    "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].database),
+                    "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
                     "@type": "Dataset",
-                    "Dataset.titel": databases[d].database + " van " + institutionName,
-                    "Dataset.beschrijving": "Event stream van de Adlib database '" + databases[d].database + "' van de instelling: " + institutionName,
+                    "Dataset.titel": databases[d].adlibDatabase + " van " + institutionName,
+                    "Dataset.beschrijving": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
                     "Dataset.heeftUitgever": uitgevers,
                     "heeftDistributie": {
                         "@type": "Distributie",
-                        "toegangsURL": config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].database,
+                        "toegangsURL": config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase,
                         "dcterms:conformsTo": "https://w3id.org/tree"
                     }
                 });

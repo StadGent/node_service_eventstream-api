@@ -30,10 +30,10 @@ module.exports.getEventstream = async function(req, res) {
 
         const distinctFragmentsQuery = `
             (select "generatedAtTime"
-            from (select "generatedAtTime", row_number() over () - 1 rownr
+            from (select "generatedAtTime", row_number() over (ORDER BY "generatedAtTime" ASC) - 1 rownr
                   from "Members"
                   where institution='${institution}'
-                  AND database='${adlibdatabase}'
+                  AND "adlibDatabase"='${adlibdatabase}'
                   group by "generatedAtTime") AS distinctGeneratedAtTimes
             where rownr % ${numberOfObjectsPerFragment} = 0
             )`;
@@ -42,7 +42,7 @@ module.exports.getEventstream = async function(req, res) {
             where: {
                 [Op.and]: [
                     {institution: institution},
-                    {database: adlibdatabase},
+                    {adlibDatabase: adlibdatabase},
                     {generatedAtTime: {
                         [Op.and]: [{
                             [Op.lte]: generatedAtTime
@@ -60,7 +60,7 @@ module.exports.getEventstream = async function(req, res) {
                 where: {
                     [Op.and]: [
                         {institution: institution},
-                        {database: adlibdatabase},
+                        {adlibDatabase: adlibdatabase},
                         {generatedAtTime: {
                                 [Op.in]: db.literal(distinctFragmentsQuery)
                             }}
@@ -81,7 +81,7 @@ module.exports.getEventstream = async function(req, res) {
             where: {
                 [Op.and]: [
                     {institution: institution},
-                    {database: adlibdatabase},
+                    {adlibDatabase: adlibdatabase},
                     {generatedAtTime: {
                         [Op.and]: [{
                                 [Op.gt]: generatedAtTime
@@ -109,7 +109,7 @@ module.exports.getEventstream = async function(req, res) {
             where: {
                 [Op.and]: [
                     {institution: institution},
-                    {database: adlibdatabase},
+                    {adlibDatabase: adlibdatabase},
                     {generatedAtTime: {
                         [Op.and]: [{
                             [Op.lt]: generatedAtTime
@@ -128,7 +128,7 @@ module.exports.getEventstream = async function(req, res) {
                 where: {
                     [Op.and]: [
                         {institution: institution},
-                        {database: adlibdatabase},
+                        {adlibDatabase: adlibdatabase},
                         {generatedAtTime: {
                             [Op.lt]: fr
                         }}
@@ -152,7 +152,7 @@ module.exports.getEventstream = async function(req, res) {
                 where: {
                     [Op.and]: [
                         {institution: institution},
-                        {database: adlibdatabase},
+                        {adlibDatabase: adlibdatabase},
                         {generatedAtTime: {
                                 [Op.gte]: nextFr
                             }}
@@ -210,7 +210,7 @@ module.exports.getEventstream = async function(req, res) {
             where: {
                 [Op.and]: [
                     {institution: institution},
-                    {database: adlibdatabase},
+                    {adlibDatabase: adlibdatabase},
                     {generatedAtTime: {
                         [Op.and]: [{
                                 [Op.gte]: fr
