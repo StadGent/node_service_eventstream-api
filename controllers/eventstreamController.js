@@ -38,7 +38,7 @@ module.exports.getEventstream = async function(req, res) {
             where rownr % ${numberOfObjectsPerFragment} = 0
             )`;
 
-        const fr = await db.models.Member.max('generatedAtTime', {
+        let fr = await db.models.Member.max('generatedAtTime', {
             where: {
                 [Op.and]: [
                     {institution: institution},
@@ -55,7 +55,19 @@ module.exports.getEventstream = async function(req, res) {
         });
 
         if (!fr) {
-            throw "Fragment not found";
+            // redirect to oldest fragment
+            fr = await db.models.Member.min('generatedAtTime', {
+                where: {
+                    [Op.and]: [
+                        {institution: institution},
+                        {database: adlibdatabase},
+                        {generatedAtTime: {
+                                [Op.in]: db.literal(distinctFragmentsQuery)
+                            }}
+                    ]
+                }
+            });
+            // throw "Fragment not found";
         }
 
         if (generatedAtTime.getTime() !== fr.getTime()) {
@@ -82,11 +94,12 @@ module.exports.getEventstream = async function(req, res) {
             }
         });
 
-        if (nextFr != null) {
+        if (nextFr>0) {
             // Cache older fragment that won't change over time
             res.set({ 'Cache-Control': 'public, max-age=31536000, immutable' });
             // res.set({ 'Cache-Control': 'public, max-age=30000' });
         } else {
+            // nextFr = 0
             // Do not cache current fragment as it will get more data
             res.set({ 'Cache-Control': 'no-cache, no-store, must-revalidate' });
         }
@@ -147,7 +160,7 @@ module.exports.getEventstream = async function(req, res) {
                 }
             });
             relations.push({
-                "@type": "tree:GreaterThanOrEqualRelation",
+                "@type": "tree:GreaterThanOrEqualToRelation",
                 "tree:node": baseURIFragments + '?generatedAtTime=' + nextFr.toISOString(),
                 "tree:path": "prov:generatedAtTime",
                 "tree:value": nextFr,
