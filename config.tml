@@ -20,20 +20,20 @@
 
 [hva]
   institutionName = 'Het Huis van Alijn (Gent)'
-  institutionURI = 'http://www.wikidata.org/entity/Q2358158'
+  institutionURI = 'https://www.wikidata.org/entity/Q2358158'
 
 [dmg]
   institutionName = 'Design Museum Gent'
-  institutionURI = 'http://www.wikidata.org/entity/Q1809071'
+  institutionURI = 'https://www.wikidata.org/entity/Q1809071'
 
 [industriemuseum]
   institutionName = 'Industriemuseum'
-  institutionURI = 'http://www.wikidata.org/entity/Q2245203'
+  institutionURI = 'https://www.wikidata.org/entity/Q2245203'
 
 [archiefgent]
   institutionName = 'Archief Gent'
-  institutionURI = 'http://www.wikidata.org/entity/Q41776192'
+  institutionURI = 'https://www.wikidata.org/entity/Q41776192'
 
 [stam]
   institutionName = 'STAM (Gent)'
-  institutionURI = 'http://www.wikidata.org/entity/Q980285'
+  institutionURI = 'https://www.wikidata.org/entity/Q980285'
