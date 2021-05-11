@@ -1,15 +1,8 @@
-[adlib]
-  schedule = '* * 0 * * *'
-  baseUrl = 'https://cjm-web.adlibhosting.com/coghentapi/wwwopac.ashx'
-  username = 'coghent'
-  password = 'xxx'
-  limit = 10
-
 [database]
-  connectionURI = 'sqlite://./eventstream.db'
+  connectionURI = 'mssql://SA:HelloWorld123@localhost:1433'
 
 [eventstream]
-  protocol = 'https'
+  protocol = 'http'
   hostname = 'localhost'
   port = 3000
   path = ''

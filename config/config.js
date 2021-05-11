@@ -4,13 +4,6 @@ let toml = require('toml');
 module.exports.getConfig = function() {
     let data = toml.parse(fs.readFileSync(__dirname + "/../config.tml").toString());
     return {
-        adlib: {
-            schedule: data.adlib.schedule,
-            baseUrl: data.adlib.baseUrl,
-            username: data.adlib.username,
-            password: data.adlib.password,
-            limit: data.adlib.limit
-        },
         database: {
             connectionURI: data.database.connectionURI
         },

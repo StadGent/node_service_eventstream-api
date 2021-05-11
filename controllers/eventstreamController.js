@@ -17,7 +17,7 @@ module.exports.getEventstream = async function(req, res) {
 
         let adlibdatabase = req.params.adlibDatabase;
         let institution = req.params.institution;
-        if (!config[institution]) {
+        if (!config[institution] && institution != "adlib") {
             throw "institution not supported";
         }
 
