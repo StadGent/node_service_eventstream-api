@@ -99,9 +99,11 @@ module.exports.getEventstream = async function(req, res) {
             res.set({ 'Cache-Control': 'public, max-age=31536000, immutable' });
             // res.set({ 'Cache-Control': 'public, max-age=30000' });
         } else {
-            // nextFr = 0
-            // Do not cache current fragment as it will get more data
-            res.set({ 'Cache-Control': 'no-cache, no-store, must-revalidate' });
+            // Current fragment will not get more data until next harvest
+            // Cache until next midnight + 30 min
+            let d = new Date();
+            d.setHours(24,30,0,0); // next midnight + 30min
+            res.set({ 'Expires':  d});
         }
 
         // add links to previous page
