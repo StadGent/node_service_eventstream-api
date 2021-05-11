@@ -5,16 +5,16 @@ module.exports.getConfig = function() {
     let data = toml.parse(fs.readFileSync(__dirname + "/../config.tml").toString());
     return {
         database: {
-            connectionURI: data.database.connectionURI
+            connectionURI: process.env.DATABASE_URI ? process.env.DATABASE_URI : data.database.connectionURI
         },
         mapping: {
           baseURI: data.mapping.baseURI
         },
         eventstream: {
-            protocol: data.eventstream.protocol,
-            hostname: data.eventstream.hostname,
-            port: data.eventstream.port,
-            path: data.eventstream.path,
+            protocol: process.env.EVENTSTREAM_PROTOCOL ? process.env.EVENTSTREAM_PROTOCOL : data.eventstream.protocol,
+            hostname: process.env.EVENTSTREAM_HOSTNAME ? process.env.EVENTSTREAM_HOSTNAME : data.eventstream.hostname,
+            port: process.env.EVENTSTREAM_PORT ? process.env.EVENTSTREAM_PORT : data.eventstream.port,
+            path: process.env.EVENTSTREAM_PATH ? process.env.EVENTSTREAM_PATH : data.eventstream.path,
             numberOfObjectsPerFragment: data.eventstream.numberOfObjectsPerFragment
         },
         hva: {
