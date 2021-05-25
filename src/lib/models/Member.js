@@ -1,9 +1,7 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const config = require("../../config/config.js").getConfig();
-const sequelize = new Sequelize(config.database.connectionURI);
+import { DataTypes, Model } from 'sequelize';
 
-class Member extends Model {}
-const attributes = {
+export class Member extends Model {}
+export const attributes = {
     // Model attributes are defined here
     id: {
         type: DataTypes.INTEGER,
@@ -32,6 +30,3 @@ const attributes = {
         defaultValue: '{}'
     },
 };
-
-module.exports.Member = Member;
-module.exports.attributes = attributes;

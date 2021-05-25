@@ -1,17 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var debug = require('debug')('adlib2eventstream:server');
-var http = require('http');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import debugLogger from 'debug';
+import http from 'http';
+import swaggerUi from 'swagger-ui-express';
+import routes from './routes/all';
+import * as swaggerDocument from './swagger.json';
 
-var routes = require('./routes/all');
-
-var app = express();
-
+const app = express();
+const debug = debugLogger('adlib2eventstream:server');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // view engine setup
@@ -25,12 +23,10 @@ let setHeaders = function (req, res, next) {
     'Allow': 'GET',
     'Content-Language': 'nl'
   });
-  next()
-}
+  next();
+};
 
 app.use(setHeaders);
-
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -59,14 +55,14 @@ app.use(function (err, req, res, next) {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -81,7 +77,7 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -105,7 +101,7 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  const bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -129,11 +125,11 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+  const addr = server.address();
+  const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
 
-module.exports = app;
+export default app; // TODO: why export this?
