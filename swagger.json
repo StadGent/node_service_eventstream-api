@@ -429,6 +429,63 @@
             "type": "string"
           }
         }
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "dcterms:isVersionOf": {
+            "type": "string"
+          },
+          "prov:generatedAtTime": {
+            "type": "string"
+          },
+          "skos:inscheme": {
+            "type": "string"
+          },
+          "prov:wasAttributedTo": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            }
+          },
+          "heeftGeboorte": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                "type": "string"
+              },
+              "datum": {
+                "type": "string"
+              },
+              "voornaam": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "achternaam": {
+                "type": "string"
+              },
+              "volledigeNaam": {
+                "type": "string"
+              },
+              "memberOf": {
+                "type": "string"
+              }
+            }
+          }
+        }
       }
     }
   },
