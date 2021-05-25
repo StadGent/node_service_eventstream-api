@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Adlib Eventstream Api",
+      "description": "This api exposes generated endpoints containing information sourced from adlib databases.",
+      "version": "1.0.0",
+      "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+      }
+  }
+}
