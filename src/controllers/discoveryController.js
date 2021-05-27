@@ -12,6 +12,8 @@ export async function getDiscoveryMetadata(req, res) {
   try {
     if(!db) db = await Utils.initDb();
 
+    Utils.log(`GET ${req.url}`, "controllers/discoveryController:getDiscoveryMetadata", "INFO", req.correlationId());
+
     let baseURI = config.mapping.baseURI.endsWith('/') ? config.mapping.baseURI : config.mapping.baseURI + '/';
 
     res.set({
@@ -72,6 +74,7 @@ export async function getDiscoveryMetadata(req, res) {
     }
     res.send(JSON.stringify(md));
   } catch (e) {
+    Utils.log("Send not found", "controllers/discoveryController:getDiscoveryMetadata", "WARN", req.correlationId());
     Utils.sendNotFound(req, res);
   }
 }

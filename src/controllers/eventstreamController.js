@@ -16,7 +16,11 @@ export async function getEventstream(req, res) {
 
     let adlibdatabase = req.params.adlibDatabase;
     let institution = req.params.institution;
+
+    Utils.log(`GET ${req.url}`, "controllers/eventstreamController:getEventstream", "INFO", req.correlationId());
+
     if (!config[institution] && institution != "adlib") {
+      Utils.log("Institution not supported", "controllers/eventstreamController:getEventstream", "WARN", req.correlationId());
       throw "institution not supported";
     }
 
@@ -236,12 +240,13 @@ export async function getEventstream(req, res) {
         json["memberOf"] = collectionURI;
         fragmentContent["@included"].push(json);
       } catch (e) {
-        console.log("Something wrong with " + p);
+        Utils.log("Something wrong with " + p, "controllers/eventstreamController:getEventstream", "ERROR", req.correlationId());
       }
     }
     res.send(JSON.stringify(fragmentContent));
   }
   catch (e) {
+    Utils.log("Send not found", "controllers/eventstreamController:getEventstream", "WARN", req.correlationId());
     Utils.sendNotFound(req, res);
   }
 }

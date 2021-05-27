@@ -30,3 +30,18 @@ export const attributes = {
         defaultValue: '{}'
     },
 };
+
+export const indexes = [
+    {
+        fields: ['version']
+    },
+    {
+        fields: ['institution']
+    },
+    {
+        fields: ['adlibDatabase']
+    },
+    {
+        fields: ['generatedAtTime']
+    },
+];

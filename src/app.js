@@ -7,6 +7,8 @@ import http from 'http';
 import swaggerUi from 'swagger-ui-express';
 import routes from './routes/all';
 import * as swaggerDocument from './swagger.json';
+import correlatorExpress from 'express-correlation-id';
+import Utils from './lib/utils';
 
 const app = express();
 const debug = debugLogger('adlib2eventstream:server');
@@ -31,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(correlatorExpress());
 
 app.use('/', routes);
 
@@ -107,11 +110,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      Utils.log(bind + ' requires elevated privileges', "adlib-backend/app.js:onError", "ERROR", null);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      Utils.log(bind + ' is already in use', "adlib-backend/app.js:onError", "ERROR", null);
       process.exit(1);
       break;
     default:
@@ -128,7 +131,7 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  Utils.log("Listening on " + bind, "adlib-backend:app.js:onListening", "INFO", null);
 }
 
 export default app; // TODO: why export this?

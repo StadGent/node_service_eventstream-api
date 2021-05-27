@@ -58,4 +58,13 @@ export default class Utils {
     // URI template: https://stad.gent/id/{type}/{scheme-id}/{concept-ref}
     return `${baseURI}${type}/${priref}`;
   }
+
+  static log(message, loggerName, level, correlationId) {
+    let levelValue = 0;
+    if (level === "INFO") levelValue = 4;
+    else if (level === "ERROR") levelValue = 2;
+    else if (level === "CRIT") levelValue = 1;
+
+    console.log(`{"@timestamp":"${new Date().toISOString()}","@version":1,"message":"${message}","logger_name":"${loggerName}","level":${level}","level_value":${levelValue},"correlationId":"${correlationId}"}`);
+  }
 }
