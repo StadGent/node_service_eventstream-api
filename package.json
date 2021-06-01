@@ -10,6 +10,10 @@
     "lint": "eslint src/"
   },
   "dependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
@@ -38,10 +42,6 @@
   },
   "homepage": "https://github.com/StadGent/node_service_eventstream-api#readme",
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
-    "@babel/core": "^7.14.3",
-    "@babel/node": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
     "eslint": "^7.27.0",
     "nodemon": "^2.0.7"
   }
