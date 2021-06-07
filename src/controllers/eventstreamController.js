@@ -4,7 +4,7 @@ import md5 from 'md5';
 import { Op } from 'sequelize';
 
 const config = Config.getConfig();
-const port = config.eventstream.port != '' ? ':' + config.eventstream.port : '';
+const port = (config.eventstream.port != '' && config.eventstream.port != '80') ? ':' + config.eventstream.port : '';
 const path = config.eventstream.path != '' ? config.eventstream.path + '/' : '';
 
 let db = null;
