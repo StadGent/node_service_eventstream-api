@@ -57,7 +57,7 @@ app.use(function (err, req, res, next) {
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.EVENTSTREAM_PORT || '3000');
+const port = normalizePort(process.env.EVENTSTREAM_SERVERPORT || '3000');
 app.set('port', port);
 
 /**
