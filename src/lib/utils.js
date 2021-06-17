@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 import { Member, attributes as memberAttributes } from './models/Member';
 
 const config = Config.getConfig();
-const port = config.eventstream.port != '' ? ':' + config.eventstream.port : '';
+const port = (config.eventstream.port != '' && config.eventstream.port != '80') ? ':' + config.eventstream.port : '';
 const path = config.eventstream.path != '' ? config.eventstream.path + '/' : '';
 
 export default class Utils {

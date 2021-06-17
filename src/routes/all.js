@@ -5,7 +5,7 @@ import { statusAmIUp, statusDb } from '../controllers/healthcheckController';
 import Config from '../config/config';
 
 const config = Config.getConfig();
-const port = config.eventstream.port != '' ? ':' + config.eventstream.port : '';
+const port = (config.eventstream.port != '' && config.eventstream.port != '80') ? ':' + config.eventstream.port : '';
 const path = config.eventstream.path != '' ? config.eventstream.path + '/' : '';
 const baseURI = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path;
 const router = express.Router();
