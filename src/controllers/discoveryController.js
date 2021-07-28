@@ -29,7 +29,7 @@ export async function getDiscoveryMetadata(req, res) {
       "@type": "Datasetcatalogus",
       "Datasetcatalogus.titel": "Catalogus CoGhent",
       "Datasetcatalogus.beschrijving": "Catalogus van datasets voor de Collectie van de Gentenaar.",
-      "heeftDataset": []
+      "Datasetcatalogus.heeftDataset": []
     };
     const institutions = await db.models.Member.findAll(  {
       attributes: ['institution'],
@@ -58,7 +58,7 @@ export async function getDiscoveryMetadata(req, res) {
           institutionName = config[institutions[i].institution].institutionName;
           uitgevers = config[institutions[i].institution].institutionURI;
         }
-        md["heeftDataset"].push({
+        md["Datasetcatalogus.heeftDataset"].push({
           "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
           "@type": "Dataset",
           "Dataset.titel": databases[d].adlibDatabase + " van " + institutionName,
