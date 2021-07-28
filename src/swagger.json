@@ -19,13 +19,13 @@
           "@type": {
             "type": "string"
           },
-          "DatasetCatalogus.title": {
+          "Datasetcatalogus.title": {
             "type": "string"
           },
-          "DatasetCatalogus.beschrijving": {
+          "Datasetcatalogus.beschrijving": {
             "type": "string"
           },
-          "HeeftDataSet": {
+          "Datasetcatalogus.HeeftDataSet": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Dataset"
