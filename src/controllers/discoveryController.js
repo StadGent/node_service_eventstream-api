@@ -26,9 +26,9 @@ export async function getDiscoveryMetadata(req, res) {
         "dcterms": "http://purl.org/dc/terms/"
       }],
       "@id": baseURI + 'dcat/coghent',
-      "@type": "DatasetCatalogus",
-      "DatasetCatalogus.titel": "Catalogus CoGhent",
-      "DatasetCatalogus.beschrijving": "Catalogus van datasets voor de Collectie van de Gentenaar.",
+      "@type": "Datasetcatalogus",
+      "Datasetcatalogus.titel": "Catalogus CoGhent",
+      "Datasetcatalogus.beschrijving": "Catalogus van datasets voor de Collectie van de Gentenaar.",
       "heeftDataset": []
     };
     const institutions = await db.models.Member.findAll(  {
