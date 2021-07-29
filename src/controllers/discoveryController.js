@@ -22,7 +22,7 @@ export async function getDiscoveryMetadata(req, res) {
     });
 
     let md = {
-      "@context": ["https://data.vlaanderen.be/doc/applicatieprofiel/DCAT-AP-VL/standaard/2019-06-13/context/DCAT-AP-VL.jsonld", {
+      "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL.jsonld", {
         "dcterms": "http://purl.org/dc/terms/"
       }],
       "@id": baseURI + 'dcat/coghent',
