@@ -3,7 +3,7 @@
   "info": {
       "title": "Adlib Eventstream Api",
       "description": "This api exposes generated endpoints containing information sourced from adlib databases.",
-      "version": "0.0.1"
+      "version": "1.0.0"
   },
   "servers": [
     {
