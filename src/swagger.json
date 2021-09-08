@@ -1,0 +1,559 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Adlib Eventstream Api",
+      "description": "This api exposes generated endpoints containing information sourced from adlib databases.",
+      "version": "0.0.1"
+  },
+  "components": {
+    "schemas": {
+      "Catalogus": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "Datasetcatalogus.title": {
+            "type": "string"
+          },
+          "Datasetcatalogus.beschrijving": {
+            "type": "string"
+          },
+          "Datasetcatalogus.HeeftDataSet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Dataset"
+            }
+          }
+        }
+      },
+      "Dataset": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "Dataset.titel": {
+            "type": "string"
+          },
+          "Dataset.beschrijving": {
+            "type": "string"
+          },
+          "Dataset.heeftUitgever": {
+            "type": "array", 
+            "items": {
+              "type": "string"
+            }
+          },
+          "heeftDistributie": {
+            "type": "object", 
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "toegangsURL": {
+                "type": "string"
+              },
+              "dcterms:conformsTo": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Fragment": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "viewOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              },
+              "@type": {
+                "type": "string"
+              }
+            }
+          },
+          "@included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Object"
+            }
+          },
+          "tree:relation": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "tree:node": {
+                "type": "string"
+              },
+              "tree:path": {
+                "type": "string"
+              },
+              "tree:value": {
+                "type": "string"
+              },
+              "tree:remainingItems": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "Object": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "dcterms:isVersionOf": {
+            "type": "string"
+          },
+          "prov:generatedAtTime": {
+            "type": "string"
+          },
+          "foaf:page": {
+            "type": "string"
+          },
+          "MaterieelDing.beheerder": {
+            "type": "string"
+          },
+          "MensgemaaktObject.maakDeelUitVan": {
+            "type": "array", 
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                },
+                "Entiteit.beschrijving": {
+                  "type": "string"
+                },
+                "Entiteit.type": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "object",
+                      "properties": {
+                        "@value": {
+                          "type": "string"
+                        },
+                        "@language": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Object.identificator": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "Identificator.identificator": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Entiteit.classificatie": {
+            "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  },
+                  "Classificatie.getypeerdeEntiteiten": {
+                    "type": "string"
+                  },
+                  "Classificatie.toegekendeType": {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string"
+                      },
+                      "skos:prefLabel": {
+                        "type": "object",
+                        "properties": {
+                          "@value": {
+                            "type": "string"
+                          },
+                          "@language": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+          },
+          "MengemaaktObject.title": {
+            "type": "object", 
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@language": {
+                "type": "string"
+              }
+            }
+          },
+          "Entiteit.beschrijving": {
+            "type": "object", 
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@language": {
+                "type": "string"
+              }
+            }
+          },
+          "MaterieelDing.productie": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                },
+                "Productie.product": {
+                  "type": "string"
+                },
+                "Gebeurtenis.tijd": {
+                  "type": "object",
+                  "properties": {
+                    "@value": {
+                      "type": "string"
+                    },
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "Activiteit.uitgevoerdDoor": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "@type": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "object",
+                      "properties": {
+                        "@value": {
+                          "type": "string"
+                        },
+                        "@language": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Gebeurtenis.plaats": {
+                  "type": "object", 
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "skos:prefLabel": {
+                      "type": "object",
+                      "properties": {
+                        "@value": {
+                          "type": "string"
+                        },
+                        "@language": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "MensgemaaktObject.materiaal": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "MensgemaaktObject.dimensie": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "Dimensie.beschrijving": {
+                "type": "string"
+              },
+              "Dimensie.type": {
+                "type": "string"
+              },
+              "Dimensie.waarde": {
+                "type": "string"
+              },
+              "Dimensie.eenheid": {
+                "type": "string"
+              }
+            }
+          },
+          "MaterieelDing.bestaatUit": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                },
+                "Entiteit.beschrijving": {
+                  "type": "string"
+                },
+                "MensgemaaktObject.materiaal": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string"
+                      },
+                      "skos:prefLabel": {
+                        "type": "object",
+                        "properties": {
+                          "@value": {
+                            "type": "string"
+                          },
+                          "@language": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "MaterieelDing.isOvergedragenBijVerwerving": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "Gebeurtenis.tijd": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  },
+                  "Periode.begin": {
+                    "type": "string"
+                  },
+                  "Periode.einde": {
+                    "type": "string"
+                  }
+                }
+              },
+              "Activiteit.gebruikteTechniek": {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  },
+                  "skos:prefLabel": {
+                    "type": "object",
+                    "properties": {
+                      "@value": {
+                        "type": "string"
+                      },
+                      "@language": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "Verwerving.overdrachVan": {
+                "type": "string"
+              },
+              "Ververving.overgedragenAan": {
+                "type": "string"
+              }
+            }
+          },
+          "MensgemaaktObject.locatie": {
+            "type": "string"
+          },
+          "memberof": {
+            "type": "string"
+          }
+        }
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "dcterms:isVersionOf": {
+            "type": "string"
+          },
+          "prov:generatedAtTime": {
+            "type": "string"
+          },
+          "skos:inscheme": {
+            "type": "string"
+          },
+          "prov:wasAttributedTo": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            }
+          },
+          "heeftGeboorte": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                "type": "string"
+              },
+              "datum": {
+                "type": "string"
+              },
+              "voornaam": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "achternaam": {
+                "type": "string"
+              },
+              "volledigeNaam": {
+                "type": "string"
+              },
+              "memberOf": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Retrieve metadata of catalogus",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalogus" 
+                }
+              }
+            }
+          }
+
+        }
+      }
+    },
+    "/{institution}/{adlibdatabase}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "institution",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Institution from which you want to retrieve data",
+            "examples": {
+              "dmg": {
+                "value": "dmg"
+              },
+              "stam": {
+                "value": "stam"
+              }
+            }
+          },
+          {
+            "in": "path",
+            "name": "adlibdatabase",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "adlibdatabase from which you want to retrieve data",
+            "example": "objecten"
+          }
+        ],
+        "summary": "Retrieve adlib data from specific institution",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fragment" 
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
