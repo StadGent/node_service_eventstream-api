@@ -1,6 +1,6 @@
 {
   "name": "node_service_eventstream-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "node_service_eventstream-api",
   "main": "app.js",
   "scripts": {
