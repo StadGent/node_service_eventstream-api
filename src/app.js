@@ -4,37 +4,25 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import debugLogger from 'debug';
 import http from 'http';
-import swaggerUi from 'swagger-ui-express';
 import routes from './routes/all';
-import * as swaggerDocument from './swagger.json';
+import docs from './routes/docs';
 import correlatorExpress from 'express-correlation-id';
 import Utils from './lib/utils';
 
 const app = express();
 const debug = debugLogger('adlib2eventstream:server');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-let setHeaders = function (req, res, next) {
-  res.set({
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/ld+json',
-    'Allow': 'GET',
-    'Content-Language': 'nl'
-  });
-  next();
-};
 
-app.use(setHeaders);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(correlatorExpress());
 
+app.use('/api-docs', docs);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
