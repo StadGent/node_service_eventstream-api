@@ -5,6 +5,11 @@
       "description": "This api exposes generated endpoints containing information sourced from adlib databases.",
       "version": "0.0.1"
   },
+  "servers": [
+    {
+      "url": "/opendata/adlib2eventstream/v1/"
+    }
+  ],  
   "components": {
     "schemas": {
       "Catalogus": {
