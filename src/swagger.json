@@ -489,6 +489,75 @@
                 "type": "string"
               }
             }
+          },
+          "heeftOverlijden": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "datum": {
+                "type": "string"
+              }
+            }
+          },
+          "skos:inscheme:": {
+            "type": "string"
+          },
+          "prov:wasAtrributedTo": {
+            "type": "string"
+          },
+          "alternatieveNaam":{
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "volledigeNaam": {
+            "type": "string"
+          },
+          "owl:sameAs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "memberOf": {
+            "type": "string"
+          }
+        }
+      },
+      "Thesaurus": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "dcterms:isVersionOf": {
+            "type": "string"
+          },
+          "prov:generatedAtTime": {
+            "type": "string"
+          },
+          "skos:prefLabel": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "skos:inscheme": {
+            "type": "string"
+          },
+          "skos:broader": {
+            "type": "object",
+            "properties": {
+              "skos:prefLabel": {
+                "type": "string"
+              }
+            }
+          },
+          "memberOf": {
+            "type": "string"
           }
         }
       }
@@ -525,11 +594,20 @@
             },
             "description": "Institution from which you want to retrieve data",
             "examples": {
-              "dmg": {
+              "Design Museum Gent": {
                 "value": "dmg"
               },
-              "stam": {
+              "STAM": {
                 "value": "stam"
+              },
+              "Huis van Alijn": {
+                "value": "hva"
+              },
+              "Industriemuseum": {
+                "value": "industriemuseum"
+              },
+              "Archief Gent": {
+                "value": "archiefgent"
               }
             }
           },
@@ -556,9 +634,71 @@
               }
             }
           }
-
         }
       }
-    }
+    },"/adlib/{personen}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "personen",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "database you wish to retrieve",
+            "examples": {
+              "personen": {
+                "value": "personen"
+              }
+            }
+          }
+        ],
+        "summary": "Retrieve adlib data (agent list)",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      }
+    },"/adlib/{thesaurus}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "thesaurus",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "database you wish to retrieve",
+            "examples": {
+              "thesaurus": {
+                "value": "thesaurus"
+              }
+            }
+          }
+        ],
+        "summary": "Retrieve adlib data (concepts)",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Thesaurus"
+                }
+              }
+            }
+          }
+        }
+      }
   }
-}
+}}
