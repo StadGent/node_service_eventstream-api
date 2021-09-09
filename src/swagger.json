@@ -678,7 +678,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "database you wish to retrieve",
+            "description": "Database you wish to retrieve.",
             "examples": {
               "thesaurus": {
                 "value": "thesaurus"
