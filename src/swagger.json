@@ -472,21 +472,6 @@
               },
               "datum": {
                 "type": "string"
-              },
-              "voornaam": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "achternaam": {
-                "type": "string"
-              },
-              "volledigeNaam": {
-                "type": "string"
-              },
-              "memberOf": {
-                "type": "string"
               }
             }
           },
@@ -512,6 +497,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "achternaam": {
+            "type": "string"
           },
           "volledigeNaam": {
             "type": "string"
