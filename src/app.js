@@ -19,7 +19,13 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: function (res, path) {
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Allow", "GET");
+    res.set("Content-Language", "nl");
+  }
+}));
 app.use(correlatorExpress());
 
 app.use('/api-docs', docs);
