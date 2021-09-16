@@ -23,7 +23,12 @@ export async function getDiscoveryMetadata(req, res) {
 
     let md = {
       "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL.jsonld", {
-        "dcterms": "http://purl.org/dc/terms/"
+        "dcterms": "http://purl.org/dc/terms/",
+        "ldes": "https://w3id.org/ldes#",
+        "tree": "https://w3id.org/tree#",
+        "tree:view": {
+          "@type": "@id"
+        }
       }],
       "@id": baseURI + 'dcat/coghent',
       "@type": "Datasetcatalogus",
@@ -58,15 +63,17 @@ export async function getDiscoveryMetadata(req, res) {
           institutionName = config[institutions[i].institution].institutionName;
           uitgevers = config[institutions[i].institution].institutionURI;
         }
+        const toegangsURL = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase;
         md["Datasetcatalogus.heeftDataset"].push({
           "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
-          "@type": "Dataset",
+          "@type": ["Dataset", "ldes:EventStream"],
+          "tree:view": toegangsURL,
           "Dataset.titel": databases[d].adlibDatabase + " van " + institutionName,
           "Dataset.beschrijving": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
           "Dataset.heeftUitgever": uitgevers,
           "heeftDistributie": {
             "@type": "Distributie",
-            "toegangsURL": config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase,
+            "toegangsURL": toegangsURL,
             "dcterms:conformsTo": "https://w3id.org/tree"
           }
         });
