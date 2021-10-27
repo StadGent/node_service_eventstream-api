@@ -32,8 +32,24 @@ export async function getDiscoveryMetadata(req, res) {
       }],
       "@id": baseURI + 'dcat/coghent',
       "@type": "Datasetcatalogus",
-      "Datasetcatalogus.titel": "Catalogus CoGhent",
-      "Datasetcatalogus.beschrijving": "Catalogus van datasets voor de Collectie van de Gentenaar.",
+      "Datasetcatalogus.titel": {
+        "@value": "Catalogus CoGhent",
+        "@lang": "nl"
+      },
+      "Datasetcatalogus.beschrijving": {
+        "@value": "Catalogus van datasets voor de Collectie van de Gentenaar.",
+        "@lang": "nl"
+      },
+      "Datasetcatalogus.heeftLicentie": {
+        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "Datasetcatalogus.heeftUitgever": {
+        "@id": "http://stad.gent/",
+        "Agent.naam": {
+          "@value": "Stad Gent",
+          "@lang": "nl"
+        }
+      },
       "Datasetcatalogus.heeftDataset": []
     };
     const institutions = await db.models.Member.findAll(  {
@@ -56,25 +72,51 @@ export async function getDiscoveryMetadata(req, res) {
             if (institutions[ins].institution != "adlib") {
               institutionName += config[institutions[ins].institution].institutionName;
               if (ins < (institutions.length-1)) institutionName += ", ";
-              uitgevers.push(config[institutions[ins].institution].institutionURI);
+              uitgevers.push({
+                "@id": config[institutions[ins].institution].institutionURI,
+                "Agent.naam": {
+                  "@value": config[institutions[ins].institution].institutionName,
+                  "@lang": "nl"
+                }
+              });
             }
           }
         } else {
           institutionName = config[institutions[i].institution].institutionName;
-          uitgevers = config[institutions[i].institution].institutionURI;
+          uitgevers = {
+            "@id": config[institutions[i].institution].institutionURI,
+            "Agent.naam": {
+              "@value": institutionName,
+              "@lang": "nl"
+            }
+          };
         }
         const toegangsURL = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase;
         md["Datasetcatalogus.heeftDataset"].push({
           "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
           "@type": ["Dataset", "ldes:EventStream"],
           "tree:view": toegangsURL,
-          "Dataset.titel": databases[d].adlibDatabase + " van " + institutionName,
-          "Dataset.beschrijving": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
+          "Dataset.titel": {
+            "@value": databases[d].adlibDatabase + " van " + institutionName,
+            "@lang": "nl"
+          },
+          "Dataset.beschrijving": {
+            "@value": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
+            "@lang": "nl"
+          },
+          "Dataset.contactinfo": {
+            "@type": "Contactinfo",
+            "Contactinfo.eMail": getEmailFromInstitutionName(institutionName)
+          },
+          "Dataset.toegankelijkheid": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
           "Dataset.heeftUitgever": uitgevers,
           "heeftDistributie": {
             "@type": "Distributie",
             "toegangsURL": toegangsURL,
-            "dcterms:conformsTo": "https://w3id.org/tree"
+            "dcterms:conformsTo": "https://w3id.org/tree",
+            "Distributie.heeftLicentie": {
+              "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+            }
           }
         });
       }
@@ -84,4 +126,9 @@ export async function getDiscoveryMetadata(req, res) {
     Utils.log("Send not found", "controllers/discoveryController:getDiscoveryMetadata", "WARN", req.correlationId());
     Utils.sendNotFound(req, res);
   }
+}
+
+function getEmailFromInstitutionName(name) {
+  if (name === "Design Museum Gent") return 'data@designmuseumgent.be';
+  else return 'collectie@gent.be';
 }
