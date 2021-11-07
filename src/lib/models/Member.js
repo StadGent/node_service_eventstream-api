@@ -8,6 +8,10 @@ export const attributes = {
         primaryKey: true,
         autoIncrement: true
     },
+    priref: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     URI: {
         type: DataTypes.STRING,
         allowNull: false
@@ -32,6 +36,9 @@ export const attributes = {
 };
 
 export const indexes = [
+    {
+        fields: ['priref']
+    },
     {
         fields: ['version']
     },
