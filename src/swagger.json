@@ -16,7 +16,26 @@
         "type": "object",
         "properties": {
           "@context": {
-            "type": "string"
+            "type": "object",
+            "properties":{
+              "dcterms": {
+                "type": "string"
+              },
+              "ldes": {
+                "type": "string"
+              },
+              "tree": {
+                "type": "string"
+              },
+              "tree:view": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
           "@id": {
             "type": "string"
@@ -25,12 +44,55 @@
             "type": "string"
           },
           "Datasetcatalogus.title": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@lang": {
+                "type":"string"
+              }
+            }
           },
           "Datasetcatalogus.beschrijving": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@lang": {
+                "type": "string"
+              }
+            }
           },
-          "Datasetcatalogus.HeeftDataSet": {
+          "Datasetcatalogus.heeftLicentie":{
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            }
+          },
+          "Datasetcatalogus.heeftUitgever": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              },
+              "Agent.naam": {
+                "type": "object",
+                "properties": {
+                  "@value":{
+                    "type": "string"
+                  },
+                  "@lang":{
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "Datasetcatalogus.heeftDataSet": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Dataset"
@@ -45,18 +107,67 @@
             "type": "string"
           },
           "@type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tree:view": {
             "type": "string"
           },
           "Dataset.titel": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@lang": {
+                "type": "string"
+              }
+            }
           },
           "Dataset.beschrijving": {
+            "type": "object",
+            "properties": {
+              "@value": {
+                "type": "string"
+              },
+              "@lang": {
+                "type": "string"
+              }
+            }
+          },
+          "Dataset.contactinfo": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "Contactinfo.eMail": {
+                "type": "string"
+              }
+            }
+          },
+          "Dataset.toegankelijkheid": {
             "type": "string"
           },
           "Dataset.heeftUitgever": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                },
+                "Agent.naam": {
+                  "type": "object",
+                  "properties": {
+                    "@value": {
+
+                    }
+                  }
+                }
+              }
             }
           },
           "heeftDistributie": {
@@ -70,6 +181,14 @@
               },
               "dcterms:conformsTo": {
                 "type": "string"
+              },
+              "Distributie.heeftLicentie": {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }
@@ -79,7 +198,67 @@
         "type": "object",
         "properties": {
           "@context": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "prov": {
+                "type": "string"
+              },
+              "tree": {
+                "type": "string"
+              },
+              "sh": {
+                "type": "string"
+              },
+              "dc:terms": {
+                "type": "string"
+              },
+              "tree:member:": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "memberOf": {
+                "type": "object",
+                "properties": {
+                  "@reverse": {
+                    "type": "string"
+                  },
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "tree:node:": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "tree:path": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "viewOf": {
+                "type": "object",
+                "properties": {
+                  "@reverse": {
+                    "type": "string"
+                  },
+                  "@type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
           "@id": {
             "type": "string"
@@ -130,7 +309,63 @@
         "type": "object",
         "properties": {
           "@context": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dcterms:isVersionOf": {
+                  "type": "object",
+                  "properties": {
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "prov": {
+                  "type": "string"
+                },
+                "skos": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "opmerking": {
+                  "type": "string"
+                },
+                "foaf": {
+                  "type": "string"
+                },
+                "foaf:page": {
+                  "type": "object",
+                  "properties": {
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "cest": {
+                  "type": "string"
+                },
+                "inhoud": {
+                  "type": "string"
+                },
+                "la": {
+                  "type": "string"
+                },
+                "equivalent": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "@type":{
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "@id": {
             "type": "string"
@@ -184,15 +419,34 @@
             }
           },
           "Object.identificator": {
-            "type": "object",
-            "properties": {
-              "@type": {
-                "type": "string"
-              },
-              "Identificator.identificator": {
-                "type": "array",
-                "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
                   "type": "string"
+                },
+                "Identificator.identificator": {
+                  "type": "object",
+                  "properties": {
+                    "@value": {
+                      "type": "string"
+                    },
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "Entiteit.type": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -205,7 +459,7 @@
                 "@type": {
                   "type": "string"
                 },
-                "Classificatie.getypeerdeEntiteiten": {
+                "Classificatie.getypeerdeEntiteit": {
                   "type": "string"
                 },
                 "Classificatie.toegekendeType": {
@@ -226,11 +480,22 @@
                       }
                     }
                   }
+                },
+                "Entiteit.type": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
           },
-          "MengemaaktObject.title": {
+          "MengemaaktObject.titel": {
             "type": "object",
             "properties": {
               "@value": {
@@ -249,6 +514,120 @@
               },
               "@language": {
                 "type": "string"
+              }
+            }
+          },
+          "Entiteit.wordtNaarVerwezenDoor": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "Conceptueelding.heeftCreatie": {
+                "type": "object",
+                "properties": {
+                  "@type": {
+                    "type": "string"
+                  },
+                  "Gebeurtenis.tijd": {
+                    "type": "object",
+                    "properties": {
+                      "@value": {
+                        "type": "string"
+                      },
+                      "@type": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "Activiteit.uitgevoerdDoor": {
+                    "type": "object",
+                    "properties": {
+                      "@type": {
+                        "type": "string"
+                      },
+                      "equivalent": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string"
+                          },
+                          "@type": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "object",
+                            "properties": {
+                              "@value": {
+                                "type": "string"
+                              },
+                              "@language": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "Entiteit.type": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "@reverse": {
+                    "type": "object",
+                    "properties": {
+                      "Rol.activiteit": {
+                        "type": "object",
+                        "properties": {
+                          "@type": {
+                            "type": "string"
+                          },
+                          "Rol.agent": {
+                            "type": "string"
+                          },
+                          "Rol.rol": {
+                            "type": "object",
+                            "properties": {
+                              "@id": {
+                                "type": "string"
+                              },
+                              "skos:prefLabel": {
+                                "type": "object",
+                                "properties": {
+                                  "@value": {
+                                    "type": "string"
+                                  },
+                                  "@language": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "Entiteit.type": {
+                                "type": "object",
+                                "properties": {
+                                  "@id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -277,19 +656,35 @@
                 "Activiteit.uitgevoerdDoor": {
                   "type": "object",
                   "properties": {
-                    "@id": {
-                      "type": "string"
-                    },
                     "@type": {
                       "type": "string"
                     },
-                    "label": {
+                    "equivalent": {
                       "type": "object",
                       "properties": {
-                        "@value": {
+                        "@id": {
                           "type": "string"
                         },
-                        "@language": {
+                        "label": {
+                          "type": "object",
+                          "properties": {
+                            "@value": {
+                              "type": "string"
+                            },
+                            "@language": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Entiteit.type": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string"
+                        },
+                        "label": {
                           "type": "string"
                         }
                       }
@@ -310,6 +705,52 @@
                         },
                         "@language": {
                           "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "@reverse": {
+                  "type": "object",
+                  "properties": {
+                    "Rol.activiteit": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "Rol.agent": {
+                          "type": "string"
+                        },
+                        "Rol.rol": {
+                          "type": "object",
+                          "properties": {
+                            "@id": {
+                              "type": "string"
+                            },
+                            "skos:prefLabel": {
+                              "type": "object",
+                              "properties": {
+                                "@value": {
+                                  "type": "string"
+                                },
+                                "@language": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Entiteit.type": {
+                          "type": "object",
+                          "properties": {
+                            "@id": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string"
+                            }
+                          }
                         }
                       }
                     }
@@ -360,19 +801,56 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "@id": {
+                      "@type": {
                         "type": "string"
                       },
-                      "skos:prefLabel": {
-                        "type": "object",
-                        "properties": {
-                          "@value": {
-                            "type": "string"
-                          },
-                          "@language": {
-                            "type": "string"
+                      "Entiteit.type":{
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "@id": {
+                              "type": "string"
+                            },
+                            "@label": {
+                              "type": "string"
+                            },
+                            "skos:prefLabel": {
+                              "type": "object",
+                              "properties": {
+                                "@value": {
+                                  "type": "string"
+                                },
+                                "@language": {
+                                  "type": "string"
+                                }
+                              }
+                            }
                           }
                         }
+                      }
+                    }
+                  }
+                },
+                "MensgemaakObject.dimensie": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@type": {
+                        "type": "string"
+                      },
+                      "Dimensie.beschrijving": {
+                        "type": "string"
+                      },
+                      "Dimensie.type": {
+                        "type": "string"
+                      },
+                      "Dimensie.waarde": {
+                        "type": "string"
+                      },
+                      "Dimensie.eenheid": {
+                        "type": "string"
                       }
                     }
                   }
@@ -403,23 +881,70 @@
               "Activiteit.gebruikteTechniek": {
                 "type": "object",
                 "properties": {
-                  "@id": {
+                  "@type": {
                     "type": "string"
                   },
-                  "skos:prefLabel": {
-                    "type": "object",
-                    "properties": {
-                      "@value": {
-                        "type": "string"
-                      },
-                      "@language": {
-                        "type": "string"
+                  "Entiteit.type":{
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string"
+                        },
+                        "skos:prefLabel": {
+                          "type": "object",
+                          "properties": {
+                            "@value": {
+                              "type": "string"
+                            },
+                            "@language": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "label": {
+                          "type": "string"
+                        }
                       }
                     }
                   }
                 }
               },
-              "Verwerving.overdrachVan": {
+              "Gebeurtenis.plaats": {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  },
+                  "Entiteit.type": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string"
+                        },
+                        "skos:prefLabel": {
+                          "type": "object",
+                          "properties": {
+                            "@value": {
+                              "type": "string"
+                            },
+                            "@language": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "label": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Verwerving.overdrachtVan": {
                 "type": "string"
               },
               "Ververving.overgedragenAan": {
