@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
     res.set("Access-Control-Allow-Origin", "*");
     res.set("Allow", "GET");
     res.set("Content-Language", "nl");
+    res.set("Cache-Control", "max-age=86400");
   }
 }));
 app.use(correlatorExpress());
