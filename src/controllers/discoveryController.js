@@ -130,5 +130,8 @@ export async function getDiscoveryMetadata(req, res) {
 
 function getEmailFromInstitutionName(name) {
   if (name === "Design Museum Gent") return 'data@designmuseumgent.be';
+  else if (name === "Archief Gent") return 'archief@stad.gent';
+  else if (name === "Huis van Alijn (Gent)") return 'info@huisvanalijn.be';
+  else if (name === "Industriemuseum") return 'info@industriemuseum.be';
   else return 'collectie@gent.be';
 }
