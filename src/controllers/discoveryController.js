@@ -34,11 +34,11 @@ export async function getDiscoveryMetadata(req, res) {
       "@type": "Datasetcatalogus",
       "Datasetcatalogus.titel": {
         "@value": "Catalogus CoGhent",
-        "@lang": "nl"
+        "@language": "nl"
       },
       "Datasetcatalogus.beschrijving": {
         "@value": "Catalogus van datasets voor de Collectie van de Gentenaar.",
-        "@lang": "nl"
+        "@language": "nl"
       },
       "Datasetcatalogus.heeftLicentie": {
         "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
@@ -47,7 +47,7 @@ export async function getDiscoveryMetadata(req, res) {
         "@id": "http://stad.gent/",
         "Agent.naam": {
           "@value": "Stad Gent",
-          "@lang": "nl"
+          "@language": "nl"
         }
       },
       "Datasetcatalogus.heeftDataset": []
@@ -76,7 +76,7 @@ export async function getDiscoveryMetadata(req, res) {
                 "@id": config[institutions[ins].institution].institutionURI,
                 "Agent.naam": {
                   "@value": config[institutions[ins].institution].institutionName,
-                  "@lang": "nl"
+                  "@language": "nl"
                 }
               });
             }
@@ -87,7 +87,7 @@ export async function getDiscoveryMetadata(req, res) {
             "@id": config[institutions[i].institution].institutionURI,
             "Agent.naam": {
               "@value": institutionName,
-              "@lang": "nl"
+              "@language": "nl"
             }
           };
         }
@@ -98,11 +98,11 @@ export async function getDiscoveryMetadata(req, res) {
           "tree:view": toegangsURL,
           "Dataset.titel": {
             "@value": databases[d].adlibDatabase + " van " + institutionName,
-            "@lang": "nl"
+            "@language": "nl"
           },
           "Dataset.beschrijving": {
             "@value": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
-            "@lang": "nl"
+            "@language": "nl"
           },
           "Dataset.contactinfo": {
             "@type": "Contactinfo",
