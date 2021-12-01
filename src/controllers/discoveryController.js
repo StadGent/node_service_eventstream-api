@@ -133,5 +133,6 @@ function getEmailFromInstitutionName(name) {
   else if (name === "Archief Gent") return 'archief@stad.gent';
   else if (name === "Huis van Alijn (Gent)") return 'info@huisvanalijn.be';
   else if (name === "Industriemuseum") return 'info@industriemuseum.be';
+  else if (name === "STAM (Gent)") return 'collectie.stam@stad.gent';
   else return 'collectie@gent.be';
 }
