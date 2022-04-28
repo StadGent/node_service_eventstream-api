@@ -20,7 +20,7 @@ export async function getEventstream(req, res) {
     Utils.log(`GET ${req.url}`, "controllers/eventstreamController:getEventstream", "INFO", req.correlationId());
 
     if (!config[institution] && institution != "adlib") {
-      Utils.log("Institution not supported", "controllers/eventstreamController:getEventstream", "WARN", req.correlationId());
+      Utils.log("Institution not supported", "controllers/eventstreamController:getEventstream", "INFO", req.correlationId());
       throw "institution not supported";
     }
 
@@ -246,7 +246,7 @@ export async function getEventstream(req, res) {
     res.send(JSON.stringify(fragmentContent));
   }
   catch (e) {
-    Utils.log("Send not found", "controllers/eventstreamController:getEventstream", "WARN", req.correlationId());
+    Utils.log("Send not found", "controllers/eventstreamController:getEventstream", "INFO", req.correlationId());
     Utils.sendNotFound(req, res);
   }
 }
