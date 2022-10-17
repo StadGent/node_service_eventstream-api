@@ -421,6 +421,7 @@
       "@id": "http://www.cidoc-crm.org/cidoc-crm/P25i_moved_by",
       "@type": "@id"
     },
+    "Entiteit.beeldtUit": "MensgemaaktObject.beeldtUit",
     "Meting": "http://www.cidoc-crm.org/cidoc-crm/E16_Measurement",
     "OntwerpOfProcedure": "http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure",
     "OntwerpOfProcedure.isGeassocieerdMet": {
