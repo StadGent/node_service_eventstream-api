@@ -8,13 +8,16 @@ Een Linked Data Event Stream is een verzameling onveranderlijke objecten. Elk ob
 
 Het doel van een Linked Data Event Stream is om consumenten in staat te stellen al zijn items te repliceren en synchroon te blijven wanneer items worden toegevoegd.
 
-Adlib2Eventstream bevat objecten uit volgende instellingen:
+Adlib2Eventstream API bevat volgende Linked Data Event Streams:
 
-- Design Museum Gent
-- STAM
-- Huis van Alijn
-- Industriemuseum
-- Archief Gent
+- [Design Museum Gent](https://apidg.gent.be/opendata/adlib2eventstream/v1/dmg/objecten): objecten van Design Museum Gent
+- [Design Museum Gent tentoonstellingen](https://apidg.gent.be/opendata/adlib2eventstream/v1/dmg/tentoonstellingen): tentoonstellingen van Design Museum Gent
+- [STAM](https://apidg.gent.be/opendata/adlib2eventstream/v1/stam/objecten): objecten van STAM (Gent)
+- [Huis van Alijn](https://apidg.gent.be/opendata/adlib2eventstream/v1/hva/objecten): objecten van Het Huis van Alijn (Gent)
+- [Industriemuseum](https://apidg.gent.be/opendata/adlib2eventstream/v1/industriemuseum/objecten): objecten van Industriemuseum
+- [Archief Gent](https://apidg.gent.be/opendata/adlib2eventstream/v1/archiefgent/objecten): objecten van Archief Gent
+- [Personen](https://apidg.gent.be/opendata/adlib2eventstream/v1/adlib/personen): personen van Archief Gent, Design Museum Gent, Het Huis van Alijn (Gent), Industriemuseum, STAM (Gent)
+- [Thesaurus](https://apidg.gent.be/opendata/adlib2eventstream/v1/adlib/thesaurus): thesaurus van Archief Gent, Design Museum Gent, Het Huis van Alijn (Gent), Industriemuseum, STAM (Gent)
 
 ### Wat is de service niet?
 
