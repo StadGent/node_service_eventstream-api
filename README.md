@@ -20,6 +20,10 @@ It will start spitting out JSON objects you can pipe to your own data store and 
 
 ## Documentation
 
+### Adlib2Eventstream API
+
+Further [documentation is available in Dutch](https://github.com/StadGent/node_service_eventstream-api/blob/main/README.md).
+
 ### OpenAPI specification (OAS)
 
 The OpenAPI specification for this API is available on https://apidg.gent.be/opendata/adlib2eventstream/v1/api-docs/.
