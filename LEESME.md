@@ -54,3 +54,5 @@ Adlib2Eventstream kan je per omgeving benaderen via onderstaande endpoints. Op d
 - DV: https://apidgdv.gent.be/opendata/adlib2eventstream/v1/
 - QA: https://apidgqa.gent.be/opendata/adlib2eventstream/v1/
 - PR: https://apidg.gent.be/opendata/adlib2eventstream/v1/
+
+De OpenAPI specificatie (OAS) voor de Adlib2Eventstream API is beschikbaar op https://apidg.gent.be/opendata/adlib2eventstream/v1/api-docs/.
