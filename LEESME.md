@@ -1,3 +1,5 @@
+# Adlib2Eventstream API
+
 Adlib2Eventstream is een Linked Data Event Stream (LDES) van de collectie objecten van de Gentse musea die beheerd worden in Adlib.
 
 ## Features
@@ -20,8 +22,6 @@ Adlib2Eventstream API bevat volgende Linked Data Event Streams:
 - [Thesaurus](https://apidg.gent.be/opendata/adlib2eventstream/v1/adlib/thesaurus): thesaurus van Archief Gent, Design Museum Gent, Het Huis van Alijn (Gent), Industriemuseum, STAM (Gent)
 
 ### Wat is de service niet?
-
-# Eventstream API
 
 Adlib2Eventstream voorziet geen schrijfoperaties, je kan enkel updates ontvangen van de collectie stukken.
 
