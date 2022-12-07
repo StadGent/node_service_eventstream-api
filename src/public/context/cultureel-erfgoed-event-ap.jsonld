@@ -282,7 +282,15 @@
       "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
-    "Periode": "http://id.loc.gov/datatypes/edtf/EDTF",
+    "Periode": "http://data.europa.eu/m8g/PeriodOfTime",
+        "Periode.begin": {
+          "@id": "http://data.europa.eu/m8g/startTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "Periode.einde": {
+          "@id": "http://data.europa.eu/m8g/endTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
     "Persoon": "http://www.w3.org/ns/person#Person",
     "Persoon.achternaam": {
       "@id": "http://xmlns.com/foaf/0.1/familyName",
