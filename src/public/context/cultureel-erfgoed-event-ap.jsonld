@@ -1,6 +1,11 @@
 {
   "@context": {
     "Activiteit": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+    "Activiteit.gebruiktObject": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object",
+      "@type": "@id"
+    },
     "Activiteit.gebruikteTechniek": {
       "@container": "@set",
       "@id": "http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique",
@@ -102,7 +107,7 @@
     },
     "Conditie.periode": {
       "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
-      "@type": "@id"
+      "@type": "http://id.loc.gov/datatypes/edtf/EDTF"
     },
     "Conditie.type": {
       "@container": "@set",
@@ -179,6 +184,7 @@
       "@id": "https://schema.org/value",
       "@type": "@id"
     },
+    "Ding": "http://www.cidoc-crm.org/cidoc-crm/E70_Thing",
     "Entiteit": "http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity",
     "Entiteit.beschrijving": {
       "@container": "@set",
@@ -218,7 +224,7 @@
     },
     "Gebeurtenis.tijd": {
       "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
-      "@type": "@id"
+      "@type": "http://id.loc.gov/datatypes/edtf/EDTF"
     },
     "GecureerdeCollectie": "http://www.cidoc-crm.org/cidoc-crm/E78_Collection",
     "Getal": "https://schema.org/Number",
@@ -276,15 +282,7 @@
       "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
-    "Periode": "http://data.europa.eu/m8g/PeriodOfTime",
-    "Periode.begin": {
-      "@id": "http://data.europa.eu/m8g/startTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "Periode.einde": {
-      "@id": "http://data.europa.eu/m8g/endTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
+    "Periode": "http://id.loc.gov/datatypes/edtf/EDTF",
     "Persoon": "http://www.w3.org/ns/person#Person",
     "Persoon.achternaam": {
       "@id": "http://xmlns.com/foaf/0.1/familyName",
@@ -341,7 +339,7 @@
     },
     "TemporeleEntiteit.tijd": {
       "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
-      "@type": "@id"
+      "@type": "http://id.loc.gov/datatypes/edtf/EDTF"
     },
     "TemporeleEntiteit.type": {
       "@container": "@set",
