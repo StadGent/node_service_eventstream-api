@@ -22,7 +22,7 @@ It will start spitting out JSON objects you can pipe to your own data store and 
 
 ### Adlib2Eventstream API
 
-Further [documentation is available in Dutch](https://github.com/StadGent/node_service_eventstream-api/blob/main/README.md).
+Further [documentation is available in Dutch](https://github.com/StadGent/node_service_eventstream-api/blob/main/LEESME.md).
 
 ### OpenAPI specification (OAS)
 
