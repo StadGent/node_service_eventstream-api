@@ -40,8 +40,11 @@ Om misbruik te voorkomen wordt wel een rate limit voorzien.
 
 Als je een volledige replicatie van alle exposities in het Design Museum Gent wil hebben en deze gesynchroniseerd wilt houden, kun je nu dit bash-commando uitvoeren:
 
+Prerequisite: node, zie https://nodejs.org/en/download/.
+
 ```
-# Install the dependency:
+# Install the dependencies:
+npm install --global yarn
 yarn install -g @treecg/actor-init-ldes-client
 
 # Read the eventstream:
