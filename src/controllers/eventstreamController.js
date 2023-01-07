@@ -8,7 +8,7 @@ const port = (config.eventstream.port != '' && config.eventstream.port != '80') 
 const path = config.eventstream.path != '' ? config.eventstream.path + '/' : '';
 
 let db = null;
-const numberOfObjectsPerFragment = 5;
+const numberOfObjectsPerFragment = config.eventstream.numberOfObjectsPerFragment;
 
 export async function getEventstream(req, res) {
   try {

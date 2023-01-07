@@ -5,7 +5,6 @@ import md5 from 'md5';
 const config = Config.getConfig();
 const port = (config.eventstream.port != '' && config.eventstream.port != '80') ? ':' + config.eventstream.port : '';
 const path = config.eventstream.path != '' ? config.eventstream.path + '/' : '';
-const numberOfObjectsPerFragment = 5;
 let db = null;
 
 export async function getDiscoveryMetadata(req, res) {
