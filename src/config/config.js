@@ -15,7 +15,7 @@ export default class Config {
             hostname: process.env.EVENTSTREAM_HOSTNAME ? process.env.EVENTSTREAM_HOSTNAME : data.eventstream.hostname,
             port: process.env.EVENTSTREAM_PORT ? process.env.EVENTSTREAM_PORT : data.eventstream.port,
             path: process.env.EVENTSTREAM_PATH ? process.env.EVENTSTREAM_PATH : data.eventstream.path,
-            numberOfObjectsPerFragment: data.eventstream.numberOfObjectsPerFragment
+            numberOfObjectsPerFragment: process.env.EVENTSTREAM_NUMBEROFOBJECTSPERFRAGMENT ? process.env.EVENTSTREAM_PATH : data.eventstream.numberOfObjectsPerFragment
         },
         hva: {
             institutionName: data.hva.institutionName,
