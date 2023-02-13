@@ -8,7 +8,10 @@
     "build": "babel src --out-dir dist --copy-files",
     "start": "node main.js",
     "lint": "eslint src/",
-    "test": "echo \"No test specified\" && exit 0"
+    "pretest": "npm run start &",
+    "test": "sleep 5 && actor-init-ldes-client --disableSynchronization true http://localhost:3000/dmg/tentoonstellingen",
+    "teste2e": "actor-init-ldes-client --disableSynchronization true https://mpparsley-literate-umbrella-4qg74rgv7gc776p-3000.preview.app.github.dev/dmg/tentoonstellingen",
+    "posttest": "kill $(lsof -t -i:3000)"
   },
   "dependencies": {
     "@babel/cli": "^7.14.3",
@@ -44,6 +47,7 @@
   "homepage": "https://github.com/StadGent/node_service_eventstream-api#readme",
   "devDependencies": {
     "eslint": "^7.27.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sqlite3": "^5.1.4"
   }
 }
