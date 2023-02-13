@@ -1,5 +1,5 @@
 [database]
-  connectionURI = 'mssql://SA:HelloWorld123@localhost:1433'
+  connectionURI = 'sqlite://./test/data/eventstream.db'
 
 [eventstream]
   protocol = 'http'
