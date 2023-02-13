@@ -12,7 +12,7 @@
   "dependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
-    "@babel/node": "^7.14.2",
+    "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
     "cookie-parser": "^1.4.5",
