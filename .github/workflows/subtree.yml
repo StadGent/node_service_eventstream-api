@@ -1,0 +1,25 @@
+name: subtree
+
+on:
+  push:
+    tags:
+      - '*'
+  release:
+    types: [created]
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+  release:
+    runs-on: ubuntu-latest
+    needs: checkout
+    steps:
+      - name: Release
+        uses: xedi/action-subtree-sync@1.0.0
+        with:
+          subtree: 'MPParsley/node_service_eventstream-api'
+          subtree_deploy_key: ${{ secrets.DEPLOY_KEY }}
+          split_prefix: 'split'
