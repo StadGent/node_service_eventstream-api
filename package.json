@@ -9,8 +9,7 @@
     "start": "node main.js",
     "lint": "eslint src/",
     "pretest": "npm run start &",
-    "test": "sleep 5 && actor-init-ldes-client --disableSynchronization true http://localhost:3000/dmg/tentoonstellingen",
-    "teste2e": "actor-init-ldes-client --disableSynchronization true https://mpparsley-literate-umbrella-4qg74rgv7gc776p-3000.preview.app.github.dev/dmg/tentoonstellingen",
+    "test": "sleep 5 && ./node_modules/@treecg/actor-init-ldes-client/bin/run.js --disableSynchronization true http://localhost:3000/dmg/tentoonstellingen",
     "posttest": "kill $(lsof -t -i:3000)"
   },
   "dependencies": {
@@ -19,6 +18,7 @@
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
+    "@treecg/actor-init-ldes-client": "^3.0.1",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "esm": "^3.2.25",
