@@ -30,7 +30,7 @@
     "md5": "^2.3.0",
     "pg": "^8.9.0",
     "pug": "3.0.2",
-    "sequelize": "^6.28.0",
+    "sequelize": "^6.31.0",
     "swagger-ui-express": "^4.6.0",
     "tedious": "^15.1.2",
     "toml": "^3.0.0"
