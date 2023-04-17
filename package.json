@@ -32,7 +32,7 @@
     "pug": "3.0.2",
     "sequelize": "^6.28.0",
     "swagger-ui-express": "^4.6.0",
-    "tedious": "^15.1.2",
+    "tedious": "^16.0.0",
     "toml": "^3.0.0"
   },
   "repository": {
