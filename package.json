@@ -31,7 +31,7 @@
     "pg": "^8.9.0",
     "pug": "3.0.2",
     "sequelize": "^6.31.1",
-    "swagger-ui-express": "^4.6.0",
+    "swagger-ui-express": "^4.6.3",
     "tedious": "^16.0.0",
     "toml": "^3.0.0"
   },
