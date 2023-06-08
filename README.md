@@ -8,8 +8,11 @@ A Linked Data Event Stream is a collection of immutable objects (such as version
 
 If you want to have a full-history replication of all expositions in the Design Museum Ghent, and keep it in sync, you can now run this bash command:
 ```
-# Install the dependency:
-yarn install -g @treecg/actor-init-ldes-client
+# Install yarn:
+npm install --global yarn
+
+# Install the ldes client:
+yarn global add @treecg/actor-init-ldes-client
 
 # Read the eventstream:
 actor-init-ldes-client https://apidg.gent.be/opendata/adlib2eventstream/v1/dmg/tentoonstellingen
