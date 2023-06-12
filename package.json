@@ -13,7 +13,7 @@
     "posttest": "kill $(lsof -t -i:3000)"
   },
   "dependencies": {
-    "@babel/cli": "^7.20.7",
+    "@babel/cli": "^7.22.5",
     "@babel/core": "^7.21.8",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
