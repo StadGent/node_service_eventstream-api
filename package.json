@@ -17,7 +17,7 @@
     "@babel/core": "^7.21.8",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
-    "@babel/register": "^7.18.9",
+    "@babel/register": "^7.22.5",
     "@treecg/actor-init-ldes-client": "^3.0.1",
     "cookie-parser": "^1.4.6",
     "debug": "~4.3.4",
