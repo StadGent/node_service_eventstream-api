@@ -21,7 +21,7 @@ export async function getDiscoveryMetadata(req, res) {
     });
 
     let md = {
-      "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL.jsonld", {
+      "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL-20.jsonld", {
         "dcterms": "http://purl.org/dc/terms/",
         "ldes": "https://w3id.org/ldes#",
         "tree": "https://w3id.org/tree#",
@@ -30,26 +30,31 @@ export async function getDiscoveryMetadata(req, res) {
         }
       }],
       "@id": baseURI + 'dcat/coghent',
-      "@type": "Datasetcatalogus",
-      "Datasetcatalogus.titel": {
+      "@type": "Catalogus",
+      "Catalogus.titel": {
         "@value": "Catalogus CoGhent",
         "@language": "nl"
       },
-      "Datasetcatalogus.beschrijving": {
+      "Catalogus.beschrijving": {
         "@value": "Catalogus van datasets voor de Collectie van de Gentenaar.",
         "@language": "nl"
       },
-      "Datasetcatalogus.heeftLicentie": {
-        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      "Catalogus.heeftLicentie": {
+        "@id": "https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0"
       },
-      "Datasetcatalogus.heeftUitgever": {
+      "Catalogus.heeftUitgever": {
         "@id": "http://stad.gent/",
+        "@type": "dcterms:Agent",
         "Agent.naam": {
           "@value": "Stad Gent",
           "@language": "nl"
         }
       },
-      "Datasetcatalogus.heeftDataset": []
+      "Catalogus.contactinfo": {
+        "@type": "Contactinfo",
+        "Contactinfo.eMail": "collectie@gent.be"
+      },
+      "Catalogus.heeftDataset": []
     };
     const institutions = await db.models.Member.findAll(  {
       attributes: ['institution'],
@@ -91,7 +96,7 @@ export async function getDiscoveryMetadata(req, res) {
           };
         }
         const toegangsURL = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase;
-        md["Datasetcatalogus.heeftDataset"].push({
+        md["Catalogus.heeftDataset"].push({
           "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
           "@type": ["Dataset", "ldes:EventStream"],
           "tree:view": toegangsURL,
