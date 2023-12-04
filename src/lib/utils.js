@@ -26,7 +26,7 @@ export default class Utils {
       'Content-Type': 'text/html'
     });
     let homepage = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path;
-    res.status(404).send('Not data found. Discover more here: <a href="' + homepage + '">' + homepage + '</a>');
+    res.status(404).send('No data found. Discover more here: <a href="' + homepage + '">' + homepage + '</a>');
   }
 
   static async initDb() {
