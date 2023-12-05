@@ -64,7 +64,7 @@
       "@type": "@id"
     },
     "CatalogusRecord.bronMetadataRecordLandingspagina": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#bron metadata record landingspagina",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#bronMetadataRecordLandingspagina",
       "@type": "@id"
     },
     "CatalogusRecord.bronMetadatarecord": {
@@ -160,19 +160,19 @@
       "@type": "@id"
     },
     "Dataservice.landingspaginaVoorAuthenticatie": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorAuthenticatie",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorAuthenticatie",
       "@type": "@id"
     },
     "Dataservice.landingspaginaVoorGebruiksinformatie": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorGebruiksinformatie",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorGebruiksinformatie",
       "@type": "@id"
     },
     "Dataservice.landingspaginaVoorStatusinformatie": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorStatusinformatie",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#landingspaginaVoorStatusinformatie",
       "@type": "@id"
     },
     "Dataservice.levensfase": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#levensfase",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#levensfase",
       "@type": "@id"
     },
     "Dataservice.licentie": {
@@ -180,7 +180,7 @@
       "@type": "@id"
     },
     "Dataservice.ontwikkelingstoestand": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#ontwikkelingstoestand",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#ontwikkelingstoestand",
       "@type": "@id"
     },
     "Dataservice.publicatiedatum": {
@@ -194,7 +194,7 @@
     },
     "Dataservice.statuut": {
       "@container": "@set",
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#statuut",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#statuut",
       "@type": "@id"
     },
     "Dataservice.thema": {
@@ -283,7 +283,7 @@
     },
     "Dataset.statuut": {
       "@container": "@set",
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#statuut",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#statuut",
       "@type": "@id"
     },
     "Dataset.thema": {
@@ -395,11 +395,11 @@
     },
     "RelatieQualificatie": "http://www.w3.org/ns/dcat#Relationship",
     "RelatieQualificatie.catalogusResource(source)": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#RelatieQualificatie.catalogusResource.source",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#RelatieQualificatie.catalogusResource.source",
       "@type": "@id"
     },
     "RelatieQualificatie.catalogusResource(target)": {
-      "@id": "http://data.vlaanderen.be/ns/metadata-dcat#RelatieQualificatie.catalogusResource.target",
+      "@id": "https://data.vlaanderen.be/ns/metadata-dcat#RelatieQualificatie.catalogusResource.target",
       "@type": "@id"
     },
     "RelatieQualificatie.rol": {
