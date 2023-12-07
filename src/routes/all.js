@@ -31,7 +31,7 @@ router.get("/status/am-i-up", statusAmIUp);
 router.get("/status/db", statusDb);
 
 router.get("/:institution/:adlibDatabase", getEventstream);
-router.get('/id/datasetcatalogus/:ref', (_req, res) => res.redirect(baseURI));
+router.get('/id/catalogus/:ref', (_req, res) => res.redirect(baseURI));
 router.get('/:institution/id/dataset/:ref', (_req, res) => res.redirect(baseURI));
 
 export default router;

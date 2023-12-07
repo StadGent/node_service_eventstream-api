@@ -21,7 +21,7 @@ export async function getDiscoveryMetadata(req, res) {
     });
 
     let md = {
-      "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL.jsonld", {
+      "@context": ["https://apidg.gent.be/opendata/adlib2eventstream/v1/context/DCAT-AP-VL-20.jsonld", {
         "dcterms": "http://purl.org/dc/terms/",
         "ldes": "https://w3id.org/ldes#",
         "tree": "https://w3id.org/tree#",
@@ -30,26 +30,32 @@ export async function getDiscoveryMetadata(req, res) {
         }
       }],
       "@id": baseURI + 'dcat/coghent',
-      "@type": "Datasetcatalogus",
-      "Datasetcatalogus.titel": {
+      "@type": "Catalogus",
+      "Catalogus.titel": {
         "@value": "Catalogus CoGhent",
         "@language": "nl"
       },
-      "Datasetcatalogus.beschrijving": {
+      "Catalogus.beschrijving": {
         "@value": "Catalogus van datasets voor de Collectie van de Gentenaar.",
         "@language": "nl"
       },
-      "Datasetcatalogus.heeftLicentie": {
-        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      "Catalogus.licentie": {
+        "@id": "https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0"
       },
-      "Datasetcatalogus.heeftUitgever": {
+      "Catalogus.uitgever": {
         "@id": "http://stad.gent/",
+        "@type": "dcterms:Agent",
         "Agent.naam": {
           "@value": "Stad Gent",
           "@language": "nl"
         }
       },
-      "Datasetcatalogus.heeftDataset": []
+      "Catalogus.contactinformatie": {
+        "@type": "Contactinfo",
+        "Contactinfo.eMail": "mailto:collectie@gent.be"
+      },
+      "Catalogus.identificator": baseURI + 'dcat/coghent',
+      "Catalogus.heeftDataset": []
     };
     const institutions = await db.models.Member.findAll(  {
       attributes: ['institution'],
@@ -91,7 +97,7 @@ export async function getDiscoveryMetadata(req, res) {
           };
         }
         const toegangsURL = config.eventstream.protocol + '://' + config.eventstream.hostname + port + '/' + path + institutions[i].institution + '/' + databases[d].adlibDatabase;
-        md["Datasetcatalogus.heeftDataset"].push({
+        md["Catalogus.heeftDataset"].push({
           "@id": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
           "@type": ["Dataset", "ldes:EventStream"],
           "tree:view": toegangsURL,
@@ -103,10 +109,12 @@ export async function getDiscoveryMetadata(req, res) {
             "@value": "Event stream van de Adlib database '" + databases[d].adlibDatabase + "' van de instelling: " + institutionName,
             "@language": "nl"
           },
-          "Dataset.contactinfo": {
+          "Dataset.contactinformatie": {
             "@type": "Contactinfo",
             "Contactinfo.eMail": getEmailFromInstitutionName(institutionName)
           },
+          "Dataset.statuut": "https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE",
+          "Dataset.identificator": baseURI + 'dataset/' + institutions[i].institution + '/' +  md5(institutions[i].institution + databases[d].adlibDatabase),
           "Dataset.toegankelijkheid": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
           "Dataset.heeftUitgever": uitgevers,
           "heeftDistributie": {
@@ -128,10 +136,10 @@ export async function getDiscoveryMetadata(req, res) {
 }
 
 function getEmailFromInstitutionName(name) {
-  if (name === "Design Museum Gent") return 'data@designmuseumgent.be';
-  else if (name === "Archief Gent") return 'archief@stad.gent';
-  else if (name === "Huis van Alijn (Gent)") return 'info@huisvanalijn.be';
-  else if (name === "Industriemuseum") return 'bibliotheek@industriemuseum.be';
-  else if (name === "STAM (Gent)") return 'collectie.stam@stad.gent';
-  else return 'collectie@gent.be';
+  if (name === "Design Museum Gent") return 'mailto:data@designmuseumgent.be';
+  else if (name === "Archief Gent") return 'mailto:archief@stad.gent';
+  else if (name === "Huis van Alijn (Gent)") return 'mailto:info@huisvanalijn.be';
+  else if (name === "Industriemuseum") return 'mailto:bibliotheek@industriemuseum.be';
+  else if (name === "STAM (Gent)") return 'mailto:collectie.stam@stad.gent';
+  else return 'mailto:collectie@gent.be';
 }

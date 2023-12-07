@@ -43,7 +43,7 @@
           "@type": {
             "type": "string"
           },
-          "Datasetcatalogus.title": {
+          "Catalogus.title": {
             "type": "object",
             "properties": {
               "@value": {
@@ -54,7 +54,7 @@
               }
             }
           },
-          "Datasetcatalogus.beschrijving": {
+          "Catalogus.beschrijving": {
             "type": "object",
             "properties": {
               "@value": {
@@ -65,7 +65,7 @@
               }
             }
           },
-          "Datasetcatalogus.heeftLicentie":{
+          "Catalogus.heeftLicentie":{
             "type": "object",
             "properties": {
               "@id": {
@@ -73,11 +73,15 @@
               }
             }
           },
-          "Datasetcatalogus.heeftUitgever": {
+          "Catalogus.heeftUitgever": {
             "type": "object",
             "properties": {
               "@id": {
                 "type": "string"
+              },
+              "@type": {
+                "type": "string",
+                "const": "dcterms:Agent"
               },
               "Agent.naam": {
                 "type": "object",
@@ -92,7 +96,7 @@
               }
             }
           },
-          "Datasetcatalogus.heeftDataSet": {
+          "Catalogus.heeftDataSet": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Dataset"
@@ -137,13 +141,13 @@
               }
             }
           },
-          "Dataset.contactinfo": {
+          "Dataset.contactPoint": {
             "type": "object",
             "properties": {
               "@type": {
                 "type": "string"
               },
-              "Contactinfo.eMail": {
+              "contactPoint.eMail": {
                 "type": "string"
               }
             }
