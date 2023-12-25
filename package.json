@@ -25,7 +25,7 @@
     "express": "^4.18.2",
     "express-correlation-id": "^2.0.1",
     "http-errors": "~2.0.0",
-    "httpntlm": "^1.8.12",
+    "httpntlm": "^1.8.13",
     "ladc": "^0.22.14",
     "md5": "^2.3.0",
     "pg": "^8.11.0",
