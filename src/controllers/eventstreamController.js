@@ -176,6 +176,7 @@ export async function getEventstream(req, res) {
     let collectionURI = baseURICollection + 'dataset/' + institution + '/' + md5(institution + adlibdatabase);
     let fragmentContent = {
       "@context": {
+        "ldes": "https://ldes.qa.stad.gent/ldes/",
         "prov": "http://www.w3.org/ns/prov#",
         "tree": "https://w3id.org/tree#",
         "sh": "http://www.w3.org/ns/shacl#",
@@ -202,7 +203,7 @@ export async function getEventstream(req, res) {
       "@type": "tree:Node",
       "viewOf": {
         "@id": collectionURI,
-        "@type": "tree:Collection"
+        "@type": "ldes:EventStream"
       },
       "@included": []
     };
