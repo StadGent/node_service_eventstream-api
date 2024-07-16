@@ -1,4 +1,4 @@
-# Eventstream API
+# Linked Data EventStream API
 
 ## Linked Data Event Stream (LDES)
 
