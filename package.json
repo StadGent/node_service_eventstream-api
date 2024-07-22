@@ -23,7 +23,7 @@
     "debug": "~4.3.4",
     "esm": "^3.2.25",
     "express": "^4.19.2",
-    "express-correlation-id": "^2.0.1",
+    "express-correlation-id": "^3.0.1",
     "http-errors": "~2.0.0",
     "httpntlm": "^1.8.13",
     "ladc": "^0.22.14",
