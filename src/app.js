@@ -1,5 +1,6 @@
 import createError from 'http-errors';
 import express from 'express';
+import helmet from 'helmet';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import debugLogger from 'debug';
@@ -10,6 +11,7 @@ import correlatorExpress from 'express-correlation-id';
 import Utils from './lib/utils';
 
 const app = express();
+app.use(helmet());
 const debug = debugLogger('adlib2eventstream:server');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
