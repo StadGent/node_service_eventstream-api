@@ -47,7 +47,7 @@
   "homepage": "https://github.com/StadGent/node_service_eventstream-api#readme",
   "devDependencies": {
     "eslint": "^8.41.0",
-    "nodemon": "^3.1.0",
+    "nodemon": "^3.1.9",
     "sqlite3": "^5.1.7"
   }
 }
